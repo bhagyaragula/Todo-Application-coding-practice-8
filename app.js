@@ -55,8 +55,8 @@ app.get("/todos/", async (request, response) => {
               todo
             WHERE 
               todo LIKE '%${search_q}%'
-              AND '${priority}'
-              AND '${status}';`;
+              AND priority = '${priority}'
+              AND status = '${status}';`;
       break;
     case hasPriorityProperties(request.query):
       getTodosQuery = `
@@ -66,7 +66,7 @@ app.get("/todos/", async (request, response) => {
               todo 
             WHERE 
               todo LIKE '%${search_q}%'
-              AND '${priority}';`;
+              AND priority = '${priority}';`;
       break;
     case hasStatusProperties(request.query):
       getTodosQuery = `
@@ -76,7 +76,7 @@ app.get("/todos/", async (request, response) => {
               todo 
             WHERE 
               todo LIKE '%${search_q}%'
-              AND '${status}';`;
+              AND status = '${status}';`;
       break;
     default:
       getTodosQuery = `
